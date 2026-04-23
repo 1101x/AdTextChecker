@@ -87,6 +87,7 @@ export default function App() {
         width: 1020,
         height: 300,
         style: { transform: "scale(1)", transformOrigin: "top left" },
+        pixelRatio: 1,
       });
 
       const link = document.createElement("a");
