@@ -106,17 +106,8 @@ export default function App() {
       <div className="max-w-[800px] mx-auto">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <h1 className="text-2xl font-bold">
-            광고 글자수 확인 : 네이버 스페셜DA 750x520 {isDarkMode ? "DM" : "LM"}
+            광고 글자수 확인 : 네이버 스페셜DA 750x520
           </h1>
-          <button
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className={`w-[140px] px-4 py-2 rounded font-bold text-sm transition-colors ${isDarkMode
-              ? "text-white bg-gray-800 border border-gray-800 hover:bg-gray-700 "
-              : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-50"
-              }`}
-          >
-            {isDarkMode ? "라이트모드로 전환" : "다크모드로 전환"}
-          </button>
         </header>
 
         {/* 설정 영역 */}
@@ -136,32 +127,44 @@ export default function App() {
             <AdInput label="1행 문구" value={text1} onChange={setText1} placeholder="1행 문구를 입력하세요" />
             <AdInput label="2행 문구" value={text2} onChange={setText2} placeholder="2행 문구를 입력하세요" />
 
-            {/* 로고 업로드 */}
-            <div className="flex items-center gap-3 pt-2">
-              <label className="sr-only">로고 이미지 업로드</label>
-              <button
-                onClick={() => fileInputRef.current?.click()}
-                className="px-4 py-2 bg-gray-700 hover:bg-gray-800 text-white text-sm font-bold rounded transition-colors"
-              >
-                로고 업로드
-              </button>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleLogoUpload}
-                className="hidden"
-              />
-              {logoImage && (
+            {/* 로고 업로드 및 모드 전환 */}
+            <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center gap-3">
+                <label className="sr-only">로고 이미지 업로드</label>
                 <button
-                  onClick={() => setLogoImage(null)}
-                  className="p-1 text-gray-400 hover:text-red-500 transition-colors"
-                  aria-label="로고 삭제"
-                  title="로고 삭제"
+                  onClick={() => fileInputRef.current?.click()}
+                  className="px-4 py-2 bg-gray-700 hover:bg-gray-800 text-white text-sm font-bold rounded transition-colors"
                 >
-                  <CircleX size={20} />
+                  로고 업로드
                 </button>
-              )}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleLogoUpload}
+                  className="hidden"
+                />
+                {logoImage && (
+                  <button
+                    onClick={() => setLogoImage(null)}
+                    className="p-1 text-gray-400 hover:text-red-500 transition-colors"
+                    aria-label="로고 삭제"
+                    title="로고 삭제"
+                  >
+                    <CircleX size={20} />
+                  </button>
+                )}
+              </div>
+
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                className={`w-[140px] px-4 py-2 rounded font-bold text-sm transition-colors ${isDarkMode
+                  ? "text-white bg-gray-800 border border-gray-800 hover:bg-gray-700 "
+                  : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-50"
+                  }`}
+              >
+                {isDarkMode ? "라이트모드로 전환" : "다크모드로 전환"}
+              </button>
             </div>
           </div>
         </section>
