@@ -111,7 +111,7 @@ export default function App() {
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
             className={`w-[140px] px-4 py-2 rounded font-bold text-sm transition-colors ${isDarkMode
-              ? "bg-gray-800 text-white hover:bg-gray-700 "
+              ? "text-white bg-gray-800 border border-gray-800 hover:bg-gray-700 "
               : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-50"
               }`}
           >
