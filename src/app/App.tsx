@@ -71,8 +71,16 @@ export default function App() {
         pixelRatio: 2,
       });
 
+      const now = new Date();
+      const timestamp = now.getFullYear().toString() +
+        (now.getMonth() + 1).toString().padStart(2, "0") +
+        now.getDate().toString().padStart(2, "0") + "_" +
+        now.getHours().toString().padStart(2, "0") +
+        now.getMinutes().toString().padStart(2, "0") +
+        now.getSeconds().toString().padStart(2, "0");
+
       const link = document.createElement("a");
-      link.download = `${Date.now()}.png`;
+      link.download = `${timestamp}.png`;
       link.href = dataUrl;
       link.click();
     } catch (err) {
