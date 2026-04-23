@@ -7,13 +7,13 @@ const FONT_BASE = "font-['Pretendard_Variable',sans-serif] not-italic";
 // txt1: top=36, h=50
 const TXT1 = {
   container: "absolute h-[56px] left-[48px] top-[36px] w-[924px]",
-  text: `absolute flex flex-col ${FONT_BASE} inset-0 justify-center  overflow-hidden text-[#222] text-[54px] text-ellipsis tracking-[-1.62px] whitespace-nowrap`,
+  text: `absolute flex flex-col ${FONT_BASE} inset-0 justify-center    translate-y-[-10px]    overflow-hidden text-[#222] text-[54px] text-ellipsis tracking-[-1.62px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이삼사오륙칠팔구십",
 };
 
 // txt2: top=112, h=50 (admark와 flex 묶음으로 같이 사용)
 const TXT2 = {
-  text: `absolute flex flex-col ${FONT_BASE} font-bold inset-0 justify-center overflow-hidden text-black text-[54px] text-ellipsis tracking-[-2.16px] whitespace-nowrap`,
+  text: `absolute flex flex-col ${FONT_BASE} font-bold inset-0 justify-center    translate-y-[-5px]     overflow-hidden text-black text-[54px] text-ellipsis tracking-[-2.16px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이",
 };
 
