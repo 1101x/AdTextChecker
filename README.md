@@ -1,7 +1,8 @@
 
   # Text Length Checker
 
-  This is a code bundle for Text Length Checker. The original project is available at https://www.figma.com/design/3BwP98ZQagPMhAc8U34xfK/Text-Length-Checker.
+  네이버 광고 글자수 확인용 도구
+  다양한 매체 업데이트 기원
 
   ## Running the code
 
