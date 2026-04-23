@@ -111,8 +111,8 @@ export default function App() {
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
             className={`px-4 py-2 rounded font-bold text-sm transition-colors ${isDarkMode
-              ? "bg-gray-800 text-white hover:bg-gray-700"
-              : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-50"
+                ? "bg-gray-800 text-white hover:bg-gray-700"
+                : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-50"
               }`}
           >
             {isDarkMode ? "라이트모드로 전환" : "다크모드로 전환"}
