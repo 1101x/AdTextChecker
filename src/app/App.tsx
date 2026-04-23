@@ -3,7 +3,25 @@ import { toPng } from "html-to-image";
 import { CircleX } from "lucide-react";
 import Component1020X300LM from "../imports/1020X300LM/1020X300LM";
 
-// ─── 공통 입력 컴포넌트 (웹 표준 준수) ───────────────────────────
+// ─── 유틸리티 함수 ──────────────────────────────────────────────
+/**
+ * YYYYMMDD_HHMMSS 형식의 타임스탬프를 생성합니다.
+ */
+const getFormattedTimestamp = () => {
+  const now = new Date();
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  return (
+    now.getFullYear() +
+    pad(now.getMonth() + 1) +
+    pad(now.getDate()) +
+    "_" +
+    pad(now.getHours()) +
+    pad(now.getMinutes()) +
+    pad(now.getSeconds())
+  );
+};
+
+// ─── 공통 입력 컴포넌트 ───────────────────────────────────────────
 interface AdInputProps {
   label: string;
   value: string;
@@ -44,6 +62,7 @@ export default function App() {
   const [text2, setText2] = useState("");
   const [logoImage, setLogoImage] = useState<string | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const previewRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -68,19 +87,10 @@ export default function App() {
         width: 1020,
         height: 300,
         style: { transform: "scale(1)", transformOrigin: "top left" },
-        pixelRatio: 2,
       });
 
-      const now = new Date();
-      const timestamp = now.getFullYear().toString() +
-        (now.getMonth() + 1).toString().padStart(2, "0") +
-        now.getDate().toString().padStart(2, "0") + "_" +
-        now.getHours().toString().padStart(2, "0") +
-        now.getMinutes().toString().padStart(2, "0") +
-        now.getSeconds().toString().padStart(2, "0");
-
       const link = document.createElement("a");
-      link.download = `${timestamp}.png`;
+      link.download = `${getFormattedTimestamp()}.png`;
       link.href = dataUrl;
       link.click();
     } catch (err) {
@@ -93,8 +103,19 @@ export default function App() {
   return (
     <main className="min-h-screen bg-gray-50 p-4 md:p-8 font-['NanumBarunGothic'] text-gray-900">
       <div className="max-w-[800px] mx-auto">
-        <header className="mb-8 text-center md:text-left">
-          <h1 className="text-2xl font-bold">광고 글자수 확인 : 네이버 스페셜DA 750x520 LM</h1>
+        <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <h1 className="text-2xl font-bold">
+            광고 글자수 확인 : 네이버 스페셜DA 750x520 {isDarkMode ? "DM" : "LM"}
+          </h1>
+          <button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            className={`px-4 py-2 rounded font-bold text-sm transition-colors ${isDarkMode
+                ? "bg-gray-800 text-white hover:bg-gray-700"
+                : "bg-white text-gray-800 border border-gray-300 hover:bg-gray-50"
+              }`}
+          >
+            {isDarkMode ? "라이트모드로 전환" : "다크모드로 전환"}
+          </button>
         </header>
 
         {/* 설정 영역 */}
@@ -169,7 +190,13 @@ export default function App() {
                   backgroundColor: isExporting ? 'transparent' : 'white'
                 }}
               >
-                <Component1020X300LM text1={text1} text2={text2} logoImage={logoImage} isExporting={isExporting} />
+                <Component1020X300LM
+                  text1={text1}
+                  text2={text2}
+                  logoImage={logoImage}
+                  isExporting={isExporting}
+                  isDarkMode={isDarkMode}
+                />
               </div>
             </div>
           </div>

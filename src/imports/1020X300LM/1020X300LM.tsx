@@ -1,4 +1,5 @@
 import imgAdmark from "./admark.png";
+import imgAdmarkDM from "./admark_dm.png";
 
 // ─── 공통 폰트 클래스 ───────────────────────────────────────────
 const FONT_BASE = "font-['NanumBarunGothic',sans-serif] not-italic";
@@ -6,14 +7,14 @@ const FONT_BASE = "font-['NanumBarunGothic',sans-serif] not-italic";
 // ─── 텍스트 박스 스타일 ───────────────────────────────────────────
 const TXT1 = {
   container: "absolute h-auto left-[48px] top-[36px] w-[924px]",
-  text: `relative flex flex-col ${FONT_BASE} translate-y-[-12px] overflow-hidden text-[#222] text-[54px] text-ellipsis tracking-[-1.5px] whitespace-nowrap`,
+  text: (isDarkMode: boolean) => `relative flex flex-col ${FONT_BASE} translate-y-[-12px] overflow-hidden ${isDarkMode ? "text-[#dadde0]" : "text-[#222]"} text-[54px] text-ellipsis tracking-[-1.5px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이삼사오륙칠팔구십",
 };
 
 const TXT2 = {
   // 사용자가 입력했을 때는 w-auto, 아니면 디폴트 538px 유지
   container: (hasInput: boolean) => `relative h-auto ${hasInput ? 'w-auto max-w-[538px]' : 'w-[538px]'} shrink-0`,
-  text: `relative flex flex-col ${FONT_BASE} font-bold translate-y-[-12px] overflow-hidden text-black text-[54px] text-ellipsis tracking-[-2px] whitespace-nowrap`,
+  text: (isDarkMode: boolean) => `relative flex flex-col ${FONT_BASE} font-bold translate-y-[-12px] overflow-hidden ${isDarkMode ? "text-[#fefefe]" : "text-black"} text-[54px] text-ellipsis tracking-[-2px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이",
 };
 
@@ -45,21 +46,23 @@ interface Props {
   text2?: string;
   logoImage?: string | null;
   isExporting?: boolean;
+  isDarkMode?: boolean;
 }
 
-export default function Component1020X300LM({ text1, text2, logoImage, isExporting = false }: Props) {
+export default function Component1020X300LM({ text1, text2, logoImage, isExporting = false, isDarkMode = false }: Props) {
   const hasText2 = text2 && text2.trim().length > 0;
+  const bgColor = isDarkMode ? "#303033" : "#eaeef3";
 
   return (
     <div
       className="relative"
-      style={{ width: 1020, height: 300, backgroundColor: isExporting ? 'transparent' : '#eaeef3' }}
+      style={{ width: 1020, height: 300, backgroundColor: isExporting ? 'transparent' : bgColor }}
       data-name="1020x300_LM"
     >
       {/* 배경 레이어 (저장 시 숨김) */}
       {!isExporting && (
         <>
-          <div className="absolute bg-[#eaeef3] h-[300px] left-0 top-0 w-[1020px]" data-name="bg" />
+          <div className="absolute h-[300px] left-0 top-0 w-[1020px]" style={{ backgroundColor: bgColor }} data-name="bg" />
           <SafeAreaMargin />
           <TxtArea top={34} left={48} width={924} height={50} />
           <TxtArea top={111} left={48} width={538} height={50} />
@@ -70,7 +73,7 @@ export default function Component1020X300LM({ text1, text2, logoImage, isExporti
 
       {/* 1행 문구 */}
       <div className={TXT1.container} data-name="txt1">
-        <div className={TXT1.text}>
+        <div className={TXT1.text(isDarkMode)}>
           <p className="overflow-hidden text-ellipsis">
             {text1 || TXT1.default}
           </p>
@@ -84,7 +87,7 @@ export default function Component1020X300LM({ text1, text2, logoImage, isExporti
       >
         {/* 2행 문구: 입력값에 따라 너비 유동적 */}
         <div className={TXT2.container(!!hasText2)} data-name="txt2">
-          <div className={TXT2.text}>
+          <div className={TXT2.text(isDarkMode)}>
             <p className="overflow-hidden text-ellipsis">
               {text2 || TXT2.default}
             </p>
@@ -99,7 +102,7 @@ export default function Component1020X300LM({ text1, text2, logoImage, isExporti
           <img
             alt="광고 표시"
             className="w-full h-full object-contain pointer-events-none"
-            src={imgAdmark}
+            src={isDarkMode ? imgAdmarkDM : imgAdmark}
           />
         </div>
       </div>
