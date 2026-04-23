@@ -7,14 +7,14 @@ const FONT_BASE = "font-['NanumBarunGothic',sans-serif] not-italic";
 // ─── 텍스트 박스 스타일 ───────────────────────────────────────────
 const TXT1 = {
   container: "absolute h-auto left-[48px] top-[36px] w-[924px]",
-  text: (isDarkMode: boolean) => `relative flex flex-col ${FONT_BASE} translate-y-[-12px] overflow-hidden ${isDarkMode ? "text-[#dadde0]" : "text-[#222]"} text-[54px] text-ellipsis tracking-[-1.5px] whitespace-nowrap`,
+  text: (isDarkMode: boolean) => `relative flex flex-col ${FONT_BASE} translate-x-[-1px] translate-y-[-12.5px] overflow-hidden ${isDarkMode ? "text-[#dadde0]" : "text-[#222]"} text-[54px] text-ellipsis tracking-[-1.5px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이삼사오륙칠팔구십",
 };
 
 const TXT2 = {
   // 사용자가 입력했을 때는 w-auto, 아니면 디폴트 538px 유지
   container: (hasInput: boolean) => `relative h-auto ${hasInput ? 'w-auto max-w-[538px]' : 'w-[538px]'} shrink-0`,
-  text: (isDarkMode: boolean) => `relative flex flex-col ${FONT_BASE} font-bold translate-y-[-12px] overflow-hidden ${isDarkMode ? "text-[#fefefe]" : "text-black"} text-[54px] text-ellipsis tracking-[-2px] whitespace-nowrap`,
+  text: (isDarkMode: boolean) => `relative flex flex-col ${FONT_BASE} font-bold   translate-x-[-1px]  translate-y-[-12.5px] overflow-hidden ${isDarkMode ? "text-[#fefefe]" : "text-black"} text-[54px] text-ellipsis tracking-[-1.95px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이",
 };
 
