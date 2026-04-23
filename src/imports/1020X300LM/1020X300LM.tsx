@@ -28,6 +28,29 @@ function SafeAreaMargin() {
   );
 }
 
+// ─── 텍스트 영역 가이드 (영역 확인용) ──────────────────────────────
+function Txt1Area({ className }: { className?: string }) {
+  return (
+    <div
+      className={className || "absolute h-[50px] left-[48px] top-[34px] w-[924px]"}
+      data-name="txt1_area"
+    >
+      <div className="absolute bg-[#0fe] inset-0 opacity-30" data-name="txt1_area" />
+    </div>
+  );
+}
+
+function Txt2Area({ className }: { className?: string }) {
+  return (
+    <div
+      className={className || "absolute h-[50px] left-[48px] top-[111px] w-[538px]"}
+      data-name="txt2_area"
+    >
+      <div className="absolute bg-[#0fe] inset-0 opacity-30" data-name="txt2_area" />
+    </div>
+  );
+}
+
 // ─── 메인 컴포넌트 ───────────────────────────────────────────────
 export default function Component1020X300LM({ text1, text2 }: { text1?: string; text2?: string }) {
   return (
@@ -37,6 +60,10 @@ export default function Component1020X300LM({ text1, text2 }: { text1?: string; 
 
       {/* 안전 영역 마진 */}
       <SafeAreaMargin />
+
+      {/* 텍스트 영역 가이드 */}
+      <Txt1Area />
+      <Txt2Area />
 
       {/* 1행 문구 */}
       <div className={TXT1.container} data-name="txt1">
