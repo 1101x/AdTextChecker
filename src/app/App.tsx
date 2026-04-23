@@ -72,7 +72,7 @@ export default function App() {
       });
 
       const link = document.createElement("a");
-      link.download = `naver-ad-preview-${Date.now()}.png`;
+      link.download = `${Date.now()}.png`;
       link.href = dataUrl;
       link.click();
     } catch (err) {
