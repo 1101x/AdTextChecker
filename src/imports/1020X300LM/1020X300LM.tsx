@@ -6,14 +6,14 @@ const FONT_BASE = "font-['Pretendard_Variable',sans-serif] not-italic";
 // ─── 텍스트 박스 정의 ───────────────────────────────────────────
 // txt1: top=36, h=50
 const TXT1 = {
-  container: "absolute h-[50px] left-[48px] top-[36px] w-[924px]",
-  text: `absolute flex flex-col ${FONT_BASE} inset-0 justify-center  leading-[50px]  overflow-hidden text-[#222] text-[54px] text-ellipsis tracking-[-1.62px] whitespace-nowrap`,
+  container: "absolute h-[56px] left-[48px] top-[36px] w-[924px]",
+  text: `absolute flex flex-col ${FONT_BASE} inset-0 justify-center  overflow-hidden text-[#222] text-[54px] text-ellipsis tracking-[-1.62px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이삼사오륙칠팔구십",
 };
 
 // txt2: top=112, h=50 (admark와 flex 묶음으로 같이 사용)
 const TXT2 = {
-  text: `absolute flex flex-col ${FONT_BASE} font-bold inset-0 justify-center  leading-[50px] overflow-hidden text-black text-[54px] text-ellipsis tracking-[-2.16px] whitespace-nowrap`,
+  text: `absolute flex flex-col ${FONT_BASE} font-bold inset-0 justify-center overflow-hidden text-black text-[54px] text-ellipsis tracking-[-2.16px] whitespace-nowrap`,
   default: "일이삼사오륙칠팔구십일이",
 };
 
@@ -41,7 +41,7 @@ export default function Component1020X300LM({ text1, text2 }: { text1?: string; 
       {/* 1행 문구 */}
       <div className={TXT1.container} data-name="txt1">
         <div className={TXT1.text}>
-          <p className="leading-[normal] overflow-hidden text-ellipsis">
+          <p className="leading-[normal]  overflow-hidden text-ellipsis">
             {text1 || TXT1.default}
           </p>
         </div>
@@ -54,13 +54,13 @@ export default function Component1020X300LM({ text1, text2 }: { text1?: string; 
         - top=112, h=50 (txt1 행과 동일 높이 기준)
       */}
       <div
-        className="absolute left-[49px] top-[112px] h-[50px] w-[631px] flex items-center"
+        className="absolute left-[49px] top-[112px] h-[56px] w-[631px] flex items-center"
         data-name="row2"
       >
         {/* txt2: relative로 내부 absolute 자식 기준점 제공 */}
         <div className="relative h-full w-[538px] shrink-0" data-name="txt2">
           <div className={TXT2.text}>
-            <p className="leading-[normal] overflow-hidden text-ellipsis">
+            <p className="leading-[normal]  overflow-hidden text-ellipsis">
               {text2 || TXT2.default}
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function Component1020X300LM({ text1, text2 }: { text1?: string; 
         <div className="w-[18px] shrink-0" />
 
         {/* 광고마크: items-center로 txt2와 수직 중앙 자동 정렬 */}
-        <div className="w-[75px] h-[48px] shrink-0 overflow-hidden" data-name="admark">
+        <div className="w-[75px] h-[50px] shrink-0 overflow-hidden" data-name="admark">
           <img
             alt="광고 표시"
             className="w-full h-full object-cover pointer-events-none"
